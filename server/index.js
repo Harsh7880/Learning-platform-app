@@ -18,14 +18,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 
-app.use(cors({
+const corsOptions = {
   origin: ["https://learning-platform-app-frontend.onrender.com"],
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization", "x-access-token"]
-}));
+};
 
-app.options("*", cors()); // Preflight handling
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); 
 // default middleware
 app.use(express.json());
 app.use(cookieParser());
