@@ -30,8 +30,7 @@ app.use(cors({
 
 app.options("*", cors()); // Preflight handling
 
-// your routes...
-app.use("/api/v1/course", courseRoutes);
+
 // apis
 app.use("/api/v1/media", mediaRoute);
 app.use("/api/v1/user", userRoute);
