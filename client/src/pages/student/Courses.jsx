@@ -17,8 +17,10 @@ const Courses = () => {
             Array.from({ length: 8 }).map((_, index) => (
               <CourseSkeleton key={index} />
             ))
+          ) : data && Array.isArray(data.courses) ? (
+            data.courses.map((course, index) => <Course key={index} course={course}/>)
           ) : (
-           data?.courses && data.courses.map((course, index) => <Course key={index} course={course}/>) 
+            <div>No courses found.</div>
           )}
         </div>
       </div>
