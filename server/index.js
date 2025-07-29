@@ -22,11 +22,16 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-    origin:"https://learning-platform-app-frontend.onrender.com",
-      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    credentials:true
+  origin: ["https://learning-platform-app-frontend.onrender.com"],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization", "x-access-token"]
 }));
- 
+
+app.options("*", cors()); // Preflight handling
+
+// your routes...
+app.use("/api/v1/course", courseRoutes);
 // apis
 app.use("/api/v1/media", mediaRoute);
 app.use("/api/v1/user", userRoute);
