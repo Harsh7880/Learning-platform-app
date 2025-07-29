@@ -18,6 +18,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 
+
 const corsOptions = {
   origin: ["https://learning-platform-app-frontend.onrender.com"],
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
