@@ -5,15 +5,17 @@ export const generateToken = (res, user, message) => {
     expiresIn: "1d",
   });
 
-  return res
+ return res
     .status(200)
     .cookie("token", token, {
       httpOnly: true,
-      sameSite: "strict",
-      maxAge: 24 * 60 * 60 * 1000, // 1 day
-    }).json({
-        success:true,
-        message,
-        user
+      secure: true, // ✅ required on HTTPS
+      sameSite: "None", // ✅ must be "None" for cross-site
+      maxAge: 7 * 24 * 60 * 60 * 1000, // Optional: cookie expiry (7 days here)
+    })
+    .json({
+      success: true,
+      message,
+      user,
     });
 };
