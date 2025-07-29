@@ -80,22 +80,16 @@ const CourseTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data && Array.isArray(data.courses) ? (
-            data.courses.map((course) => (
-              <TableRow key={course._id}>
-                <TableCell className="font-medium">{course?.coursePrice || "NA"}</TableCell>
-                <TableCell> <Badge>{course.isPublished ? "Published" : "Draft"}</Badge> </TableCell>
-                <TableCell>{course.courseTitle}</TableCell>
-                <TableCell className="text-right">
-                   <Button size='sm' variant='ghost' onClick={() => navigate(`${course._id}`)}><Edit/></Button>
-                </TableCell>
-              </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell colSpan={4}>No courses found.</TableCell>
+          {data.courses.map((course) => (
+            <TableRow key={course._id}>
+              <TableCell className="font-medium">{course?.coursePrice || "NA"}</TableCell>
+              <TableCell> <Badge>{course.isPublished ? "Published" : "Draft"}</Badge> </TableCell>
+              <TableCell>{course.courseTitle}</TableCell>
+              <TableCell className="text-right">
+                 <Button size='sm' variant='ghost' onClick={() => navigate(`${course._id}`)}><Edit/></Button>
+              </TableCell>
             </TableRow>
-          )}
+          ))}
         </TableBody>
       </Table>
     </div>

@@ -19,7 +19,7 @@ const SearchPage = () => {
     sortByPrice
   });
 
-  const isEmpty = !isLoading && (!data || !Array.isArray(data.courses) || data.courses.length === 0);
+  const isEmpty = !isLoading && data?.courses.length === 0;
 
   const handleFilterChange = (categories, price) => {
     setSelectedCatgories(categories);
@@ -44,11 +44,7 @@ const SearchPage = () => {
           ) : isEmpty ? (
             <CourseNotFound />
           ) : (
-            data && Array.isArray(data.courses) ? (
-              data.courses.map((course) => <SearchResult key={course._id} course={course}/>)
-            ) : (
-              <div>No courses found.</div>
-            )
+            data?.courses?.map((course) => <SearchResult key={course._id} course={course}/>)
           )}
         </div>
       </div>
