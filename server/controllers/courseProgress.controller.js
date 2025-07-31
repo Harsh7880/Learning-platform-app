@@ -41,6 +41,10 @@ export const getCourseProgress = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+    return res.status(500).json({
+      message: "Internal server error",
+      error: error.message
+    });
   }
 };
 
@@ -95,6 +99,10 @@ export const updateLectureProgress = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+    return res.status(500).json({
+      message: "Internal server error",
+      error: error.message
+    });
   }
 };
 
@@ -115,6 +123,10 @@ export const markAsCompleted = async (req, res) => {
     return res.status(200).json({ message: "Course marked as completed." });
   } catch (error) {
     console.log(error);
+    return res.status(500).json({
+      message: "Internal server error",
+      error: error.message
+    });
   }
 };
 
@@ -135,5 +147,9 @@ export const markAsInCompleted = async (req, res) => {
       return res.status(200).json({ message: "Course marked as incompleted." });
     } catch (error) {
       console.log(error);
+      return res.status(500).json({
+        message: "Internal server error",
+        error: error.message
+      });
     }
   };
